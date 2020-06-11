@@ -1,0 +1,110 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid tan; */
+}
+
+h1 {
+    color: red;
+    margin: 5px;
+}
+
+.card {
+    border: 1px solid black;
+    height: 85vh;
+    width: 40vh;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.C.icon {
+    color: #000;
+    /* position: absolute; */
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    margin: 20px 0 20px 0;
+    border-top: solid 4px currentColor;
+    border-right: solid 4px transparent;
+    border-bottom: solid 4px currentColor;
+    border-left: solid 4px currentColor;
+  }
+
+  
+  .button {
+      background-color: lightblue;
+      border: 1px solid lightgreen;
+      border-radius: 10px;
+      margin-top: 10px;
+  }
+
+.card > img {
+    /* max-width:100%; */
+    /* max-height:100%; */
+    /* object-fit: contain; */
+}
+
+
+
+/* .card::before{
+    content: "";
+    width: 0; 
+    height: 0; 
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent; 
+    border-right:10px solid blue; 
+} */
+
+
+.letters-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow-right {
+  width: 0; 
+  height: 0; 
+  margin-left:2px;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid green;
+}
+
+.arrow-left {
+  width: 0; 
+  height: 0; 
+  margin-right:2px;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent; 
+  border-right:20px solid blue; 
+}
+
+.card-container {
+    display: flex;
+justify-content: space-between;
+align-items: center;
+}
+@media (max-width: 480PX) { 
+   .card {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    }
+
+    .card > img {
+        width: 100%;
+    }
+
+    .letter {
+        font-size: 278px;
+    }
+    
+}
