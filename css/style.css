@@ -100,7 +100,9 @@ align-items: center;
     }
 
     .card > img {
+        height: 100%;
         width: 100%;
+        overflow: hidden;
     }
 
     .letter {
