@@ -3,7 +3,6 @@ const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 const lowerCaseLetters = letters.toLowerCase;
 let currentLetter = letters[card.getAttribute("letter")];
 let displayedLetter = document.querySelector(".letter");
-let test = document.querySelector(".test");
 let letterId = Number(card.getAttribute("letter"));
 
 const imageNames = {
@@ -35,63 +34,48 @@ const imageNames = {
   25: "Zebra",
 };
 
-const updateCurrentLetter = (dir) => {
-  currentLetter = letters[card.getAttribute("letter")];
-};
-
-const updateCurrentImage = (id) => {
-  document.getElementById("letter-image").src = `./images/${id}.jpg`;
-  document.getElementById("letter-image").alt = imageNames[id];
-};
-
-// handle left and right arrow button clicks
-
+// Updates the current cards letter and Image
 const updateCard = (dir) => {
-  console.log(card.getAttribute("letter"));
+  const updateAttributes = () => {
+    currentLetter = letters[card.getAttribute("letter")];
+    displayedLetter.innerHTML = currentLetter;
+    document.getElementById("letter-image").src = `./images/${letterId}.jpg`;
+    document.getElementById("letter-image").alt = imageNames[letterId];
+  };
 
+  // Check if 25 > letterId > 0 and handle card update accordingly
   const checkMinMaxLettid = () => {
     if (card.getAttribute("letter") < 0) {
       card.setAttribute("letter", 25);
       letterId = 25;
-      updateCurrentLetter();
-      displayedLetter.innerHTML = currentLetter;
+      updateAttributes();
       return;
     }
 
     if (card.getAttribute("letter") > 25) {
       card.setAttribute("letter", 0);
       letterId = 0;
-      updateCurrentLetter();
-      displayedLetter.innerHTML = currentLetter;
+      updateAttributes();
       return;
     }
+
+    updateAttributes();
   };
 
   if (dir == "arrow-left") {
     card.setAttribute("letter", --letterId);
     checkMinMaxLettid();
-    updateCurrentLetter(dir);
-    displayedLetter.innerHTML = currentLetter;
-    updateCurrentImage(letterId);
-
     return;
   }
+
   card.setAttribute("letter", ++letterId);
   checkMinMaxLettid();
-  updateCurrentLetter(dir);
-  displayedLetter.innerHTML = currentLetter;
-  updateCurrentImage(letterId);
 };
 
+// handle left and right click
 const handleClick = (event) => {
   updateCard(event.target.className);
 };
-
-const nextButton = document.querySelector(".next");
-
-nextButton.addEventListener("click", () => {
-  alert("button click");
-});
 
 document.querySelector(".arrow-right").addEventListener("click", handleClick);
 
@@ -129,8 +113,6 @@ const speachHandler = (event) => {
   utterThis.pitch = 2;
   utterThis.rate = 1;
   synth.speak(utterThis);
-
-  // test.innerHTML = `<h1> ${event.srcElement.attributes.letter.value} </h1>`;
 };
 
 document
